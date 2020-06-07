@@ -9,7 +9,7 @@ In order to see how I can get rid of my log messages, as I was testing the appro
 
 ## Preparation
 
-Make sure you have `yarn` installed. I'm currently using the latest version 1.x.
+Make sure you have `yarn` installed. I'm currently using the latest version 1.x of `yarn` as well as `webpack` 4.x.
 
 Clone the repo and run `yarn install` in order to have all the dependencies installed. 
 
