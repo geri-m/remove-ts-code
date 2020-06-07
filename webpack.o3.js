@@ -1,24 +1,15 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
 const parentWebPack = require('./webpack.common.js');
 const StringReplacePlugin = require('string-replace-webpack-plugin')
-
+const path = require('path');
 
 module.exports = merge(parentWebPack, {
-    mode: 'production',
+    entry: {
+        "./Option": path.join(__dirname, './src/js/Option03.ts')
+    },
 
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                enforce: 'pre',
-                exclude: /(node_modules|bower_components|\.spec\.js)/,
-                use: [
-                    {
-                        loader: 'webpack-strip-block'
-                    }
-                ]
-            },
             {
                 test: /\.js$/,
                 use: [{

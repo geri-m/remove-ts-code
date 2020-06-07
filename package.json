@@ -8,8 +8,9 @@
   },
   "scripts": {
     "clean": "rm -rf ./dist/",
-    "dev": "rm -rf ./dist/; webpack --config webpack.dev.js; cd ./dist/; cd ..",
-    "prod": "rm -rf ./dist/; webpack --config webpack.prod.js; cd ./dist/; cd .."
+    "o1": "rm -rf ./dist/; webpack --config webpack.o1.js; cd ./dist/; cd ..",
+    "o2": "rm -rf ./dist/; webpack --config webpack.o2.js; cd ./dist/; cd ..",
+    "o3": "rm -rf ./dist/; webpack --config webpack.o3.js; cd ./dist/; cd .."
   },
   "devDependencies": {
     "webpack": "^4.43.0",

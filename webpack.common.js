@@ -1,13 +1,10 @@
-const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin')
+const path = require('path');
 
 const options = {
-    entry: {
-        "./Option01": path.join(__dirname, './src/js/Option01.ts'),
-        "./Option02": path.join(__dirname, './src/js/Option02.ts'),
-        "./Option03": path.join(__dirname, './src/js/Option03.ts'),
-    },
+    // we only generate Prod Code, as we want to test the removal of code for production.
+    mode: 'production',
     output: {
         path: path.join(__dirname, 'dist/'),
         filename: '[name].js',
