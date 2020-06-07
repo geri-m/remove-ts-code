@@ -7,16 +7,15 @@ module.exports = merge(parentWebPack, {
     entry: {
         "./Option": path.join(__dirname, './src/js/Option03.ts')
     },
-
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 use: [{
                     loader: StringReplacePlugin.replace({
                         replacements: [{
-                            pattern: /Option03/g,
-                            replacement: function (_match, _p1, _offset, _string) { return "xxxx"; }
+                            pattern: /Logger.log(.+)/g,
+                            replacement: function (_match, _p1, _offset, _string) { console.log("Replace happend"); return ""; }
                         }]
                     })
                 }]

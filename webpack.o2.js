@@ -9,7 +9,7 @@ module.exports = merge(parentWebPack, {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 enforce: 'pre',
                 exclude: /(node_modules|bower_components|\.spec\.js)/,
                 use: [

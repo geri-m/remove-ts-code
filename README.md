@@ -1,11 +1,17 @@
 # Sample Project to demo code removale in TypeScript
 
-https://stackoverflow.com/questions/45776264/remove-some-code-lines-in-production-distribution-files
-
 ## Goal 
 
 I want to remove all logger related code from my production JavaScript pages which are compiled from TypeScript.
 
+In order to see how I can get rid of my log messages, as I was testing the approaches discuessed 
+[on SFO](https://stackoverflow.com/questions/45776264/remove-some-code-lines-in-production-distribution-files):
+
+## Preparation
+
+Make sure you have `yarn` installed. I'm currently using the latest version 1.x.
+
+Clone the repo and run `yarn install` in order to have all the dependencies installed. 
 
 ## Option 1: Use Webpack Environment Variable
 
@@ -21,6 +27,14 @@ if (process.env.NODE_ENV === 'development') {
 There are two problems with this solution
 * used `import` statements and subsequent dependencies or classes that are not anymore required will be still put into the package.
 * I have the put an `if` around each statement.
+
+Con:
+* Imports are still part of the production code.
+
+Pro:
+* Part of the webpack build, no extras required.
+
+Run `yarn o1` to compile the TS. If you open the index.html and check the output in the console, you will only see one line.
 
 ## Option 2: Block Strip
 
@@ -39,21 +53,28 @@ var makeFoo(bar, baz) {
     // This code would remain
     return new Foo(bar, baz);
 }
-``` 
+```
 
-I like the idea, cause this is kind of what I was looking for. But I was not able to make this work out.
+Con:
+* Requires a lot of changes to the code.
 
-* I'm not (yet) sure how to combine two loaders.
-* If I set `module.exports = { ...}`, I get the erro `Invalid configuration object`
- 
-So I skip this for the moment. (no changes to the webpack files).
+Pro:
+* Plugin is under active development.
+* Unused imports are cleaned automatically
+
+Run `yarn o2` to compile the TS. If you open the index.html and check the output in the console, you will only see one line.
 
 ## Option 3: String Replacement
 
 The [string-replace-webpack-plugin](https://www.npmjs.com/package/string-replace-webpack-plugin) give us the possibility 
 to remove dedicated regex. This is pretty much exactly what I need and on top, I don't have to make changes to my given codebase. 
 
-
-
 Con:
 * It is not developed actively anymore. (last commit in 2017)
+
+Pro:
+* I don't have to make any changes to my code
+* Unused imports are cleaned automatically
+
+Run `yarn o3` to compile the TS. If you open the index.html and check the output in the console, you will only see one line.
+

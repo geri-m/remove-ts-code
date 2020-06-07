@@ -1,8 +1,6 @@
 "use strict";
 
-/* develblock:start */
 import Logger from "./Logger";
-/* develblock:end */
 
 class Option02 {
 
