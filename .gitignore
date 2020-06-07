@@ -1,0 +1,18 @@
+node_modules
+dist
+*.zip
+
+# Extensions related stuff
+.idea
+.sass-cache
+
+# Python
+venv
+
+*.iml
+*.workspace.xml
+
+# Yarn temp files
+yarn.lock
+yarn-error.log
+package-lock.json
